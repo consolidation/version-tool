@@ -1,6 +1,6 @@
 <?php
 
-namespace ExampleProject;
+namespace VersionTool;
 
 use Symfony\Component\Console\Output\BufferedOutput;
 
