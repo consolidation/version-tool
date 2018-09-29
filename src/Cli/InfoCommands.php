@@ -2,7 +2,7 @@
 
 namespace VersionTool\Cli;
 
-use VersionTool\VersionInfo;
+use VersionTool\VersionTool;
 use Consolidation\OutputFormatters\StructuredData\RowsOfFields;
 
 class InfoCommands extends \Robo\Tasks
@@ -24,11 +24,11 @@ class InfoCommands extends \Robo\Tasks
             $paths[] = getcwd();
         }
 
-        $version_info = new VersionInfo();
+        $version_tool = new VersionTool();
 
         $result = [];
         foreach ($paths as $path) {
-            $info = $version_info->info($path);
+            $info = $version_tool->info($path);
 
             if (!$info) {
                 throw new \Exception('Could not identify any application at path ' . $path);
@@ -37,7 +37,8 @@ class InfoCommands extends \Robo\Tasks
             $data = [
                 'application' => $info->application(),
                 'version' => $info->version(),
-                'path' => $path,
+                'project-root' => $info->projectRoot(),
+                'document-root' => $info->documentRoot(),
             ];
             $result[] = $data;
         }

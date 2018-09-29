@@ -32,6 +32,7 @@ Detected frameworks:
 - Drupal 8
 - Drupal 7
 - Drupal 6
+- WordPress
 
 ## Using the API
 
@@ -41,7 +42,7 @@ $ composer require consolidation/version-tool
 ```
 Then, call as follows:
 ```
-    $version_info = new VersionInfo();
+    $version_info = new VersionTool();
     $info = $version_info->info($path);
     $app = $info->application();
     $version = $info->version();

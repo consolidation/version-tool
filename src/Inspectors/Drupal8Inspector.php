@@ -2,7 +2,7 @@
 
 namespace VersionTool\Inspectors;
 
-use VersionTool\Info\DrupalInfo;
+use VersionTool\Info\VersionInfo;
 use VersionTool\Util\ComposerInfo;
 
 class Drupal8Inspector implements InspectorInterface
@@ -50,7 +50,7 @@ class Drupal8Inspector implements InspectorInterface
             $candidate = 'core/includes/common.inc';
             if (file_exists($drupal_root . '/' . $candidate) && file_exists($drupal_root . '/core/core.services.yml')) {
                 if (file_exists($drupal_root . '/core/misc/drupal.js') || file_exists($drupal_root . '/core/assets/js/drupal.js')) {
-                    return new DrupalInfo($composer_info, $drupal_root, '/core/lib/Drupal.php', "#const VERSION = '([0-9.]*)';#m");
+                    return new VersionInfo('Drupal', $composer_info, $drupal_root, '/core/lib/Drupal.php', "#const VERSION = '([0-9.]*)';#m");
                 }
             }
         }

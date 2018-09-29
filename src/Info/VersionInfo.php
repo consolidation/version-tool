@@ -3,13 +3,16 @@
 namespace VersionTool\Info;
 use VersionTool\Util\ComposerInfo;
 
-class DrupalInfo implements InfoInterface
+class VersionInfo implements InfoInterface
 {
+    /** @var string */
+    protected $application;
+
     /** @var ComposerInfo */
     protected $composer_info;
 
     /** @var string */
-    protected $drupal_root;
+    protected $document_root;
 
     /** @var string */
     protected $version_file;
@@ -17,17 +20,18 @@ class DrupalInfo implements InfoInterface
     /** @var string */
     protected $pattern;
 
-    public function __construct($composer_info, $drupal_root, $version_file, $pattern)
+    public function __construct($application, $composer_info, $document_root, $version_file, $pattern)
     {
+        $this->application = $application;
         $this->composer_info = $composer_info;
-        $this->drupal_root = $drupal_root;
+        $this->document_root = $document_root;
         $this->version_file = $version_file;
         $this->pattern = $pattern;
     }
 
     public function application()
     {
-        return 'Drupal';
+        return $this->application;
     }
 
     public function composerInfo()
@@ -35,19 +39,31 @@ class DrupalInfo implements InfoInterface
         return $this->composer_info;
     }
 
+    public function projectRoot()
+    {
+        return $this->composer_info->projectRoot();
+    }
+
+    public function documentRoot()
+    {
+        return $this->document_root;
+    }
+
     /**
      * @inheritdoc
      */
     public function version()
     {
-        $version_path = $this->drupal_root . $this->version_file;
+        $version_path = $this->document_root . $this->version_file;
         if (!file_exists($version_path)) {
+            print "no file $version_path\n";
             return false;
         }
 
         $contents = file_get_contents($version_path);
 
         if (!preg_match($this->pattern, $contents, $matches)) {
+            print "pattern did not match\n";
             return false;
         }
 

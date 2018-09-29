@@ -6,9 +6,10 @@ use VersionTool\Inspectors\InspectorInterface;
 use VersionTool\Inspectors\Drupal8Inspector;
 use VersionTool\Inspectors\Drupal7Inspector;
 use VersionTool\Inspectors\Drupal6Inspector;
+use VersionTool\Inspectors\WordPressInspector;
 use VersionTool\Util\ComposerInfo;
 
-class VersionInfo
+class VersionTool
 {
     protected $inspectors = [];
 
@@ -17,6 +18,7 @@ class VersionInfo
         $this->add(new Drupal8Inspector());
         $this->add(new Drupal7Inspector());
         $this->add(new Drupal6Inspector());
+        $this->add(new WordPressInspector());
     }
 
     /**
