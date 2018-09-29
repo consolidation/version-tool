@@ -1,42 +1,40 @@
 dist: trusty
 language: php
-
 branches:
-  # Only test the master branch and SemVer tags.
   only:
-    - master
-    - /^[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+.*$/
-
+  - master
+  - "/^[[:digit:]]+\\.[[:digit:]]+\\.[[:digit:]]+.*$/"
 matrix:
   fast_finish: true
   include:
-    - php: 7.2
-      env: 'DEPENCENCIES=highest'
-    - php: 7.2
-    - php: 7.1
-    - php: 7.0.11
-    - php: 5.6
-      env: 'SCENARIO=phpunit5'
-    - php: 5.6
-      env: 'SCENARIO=phpunit5 DEPENDENCIES=lowest'
-
+  - php: 7.2
+    env: DEPENCENCIES=highest
+  - php: 7.2
+  - php: 7.1
+  - php: 7.0.11
+  - php: 5.6
+    env: SCENARIO=phpunit5
+  - php: 5.6
+    env: SCENARIO=phpunit5 DEPENDENCIES=lowest
 sudo: false
-
 cache:
   directories:
-    - $HOME/.composer/cache
-
+  - "$HOME/.composer/cache"
 install:
-  - 'composer scenario "${SCENARIO}" "${DEPENDENCIES}"'
-
+- composer scenario "${SCENARIO}" "${DEPENDENCIES}"
 script:
-  - composer test
-
+- composer test
 after_success:
-  - travis_retry php vendor/bin/php-coveralls -v
-
+- travis_retry php vendor/bin/php-coveralls -v
 before_deploy:
-  - composer phar:install-tools
-  - composer require --no-script consolidation/Robo
-  - composer install --prefer-dist --no-dev --no-interaction
-  - tools/box compile
+- composer phar:install-tools
+- composer require --no-script consolidation/Robo
+- composer install --prefer-dist --no-dev --no-interaction
+- tools/box compile
+deploy:
+  provider: releases
+  api_key:
+    secure: bzXmCqtxIGUaWmBAjdoYdljYKJuemcWuh07FvSUv88Myc0edUyOLDCXia6UTFCWGtqu/wZw+qRzAlBsvkShmI84qKvIbNxiUsVBobKfUnpf+pKpu925rnZGSV5g06PlSjrRrMhadYaUJPPvNOXNoNFuXiT7H/rWJe8/kMdQ8jvxVF22AsY2z5r8M9UdQPdVC+ZMsOkzjIAh0pOCQuqSN/zgyFUFpXz1i1JT9KI99SzS7DL6lM4Z+Ceng02YN1tYLG/jS/eTdgZethtF0b9eZgXMbCvUU8jP60WrAmvtB/5gyyqDmE0/dsETJEv6sKQsJcq1ov0I6Q7H/p39mAEjN2dP2rnU3PDFcAXh2U/fAUimlr4GUrmHwXhUl1cNFo20eVR3Nwr697Dc1q7DJQHhaed63igbAuBmmKilbTaVdzC/EG6NsHlM8CCDJcro9oCnB2Wk5dodqnNHQfLnm3/v64aV7a8SjZZUjvE7Zv8vO1vxFB24Wq24MgFus8Pqm1fFcRyXfYmthTmtoTrZaD3oAdNuVsnDqshLAzpDoidbwUIFyUoD2/k3nQxA+09DIfb4tukKwFjwzd5Px/bbHFvfneYdvtfoX+gWXBqx1U91XsVNSo6DVAbB6zpYw94kTFUT2NqKWeCnF5lj+Zte7RJfRIMGTVtbpztHh6MrdLZCCo+o=
+  file: version-tool.phar
+  on:
+    repo: consolidation/version-tool

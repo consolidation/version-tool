@@ -1,5 +1,5 @@
 {
-  "main": "example",
-  "output": "example.phar",
+  "main": "version-tool",
+  "output": "version-tool.phar",
   "files": ["example", "VERSION"]
 }
