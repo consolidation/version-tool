@@ -19,7 +19,7 @@
         }
     },
     "require": {
-        "php": ">=5.5.0"
+        "php": ">=5.6.37"
     },
     "require-dev": {
         "consolidation/Robo": "^1.2.3",
@@ -33,7 +33,7 @@
     "scripts": {
         "phar:install-tools": [
             "mkdir -p tools",
-            "curl -L https://github.com/humbug/box/releases/download/3.0.0/box.phar -o tools/box",
+            "curl -L https://github.com/humbug/box/releases/download/2.7.5/box.phar -o tools/box",
             "chmod +x tools/box"
         ],
         "cs": "phpcs --standard=PSR2 -n src",
@@ -61,7 +61,7 @@
         "optimize-autoloader": true,
         "sort-packages": true,
         "platform": {
-            "php": "7.0.8"
+            "php": "5.6.37"
         }
     },
     "extra": {
