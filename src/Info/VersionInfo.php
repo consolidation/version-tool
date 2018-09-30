@@ -1,6 +1,7 @@
 <?php
 
 namespace VersionTool\Info;
+
 use VersionTool\Util\ComposerInfo;
 
 class VersionInfo implements InfoInterface
