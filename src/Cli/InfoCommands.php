@@ -8,7 +8,8 @@ use Consolidation\OutputFormatters\StructuredData\RowsOfFields;
 class InfoCommands extends \Robo\Tasks
 {
     /**
-     * Multiply two numbers together
+     * Determine the application type and version of the specified
+     * framework or frameworks.
      *
      * @command info
      * @field-labels

@@ -5,7 +5,7 @@ namespace VersionTool;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Output\BufferedOutput;
 
-class ExampleCommandsTest extends TestCase implements CommandTesterInterface
+class InfoCommandsTest extends TestCase implements CommandTesterInterface
 {
     use CommandTesterTrait;
 
@@ -18,12 +18,12 @@ class ExampleCommandsTest extends TestCase implements CommandTesterInterface
     public function setUp()
     {
         // Store the command classes we are going to test
-        $this->commandClasses = [ \VersionTool\Cli\ExampleCommands::class ];
+        $this->commandClasses = [ \VersionTool\Cli\InfoCommands::class ];
         $this->setupCommandTester('TestFixtureApp', '1.0.1');
     }
 
     /**
-     * Data provider for testExampleCommands.
+     * Data provider for testInfoCommands.
      *
      * Return an array of arrays, each of which contains the data for one test.
      * The parameters in each array should be:
@@ -36,38 +36,23 @@ class ExampleCommandsTest extends TestCase implements CommandTesterInterface
      * to be the argv value to pass to the command. The application name
      * is automatically unshifted into argv[0] first.
      */
-    public function exampleTestCommandParameters()
+    public function infoTestCommandParameters()
     {
         return [
 
             [
-                '2 times 2 is 4',
-                self::STATUS_OK,
-                'multiply', 2, 2,
-            ],
-
-            [
-                'Multiply two numbers together',
+                'Determine the application type and version',
                 self::STATUS_OK,
                 'list',
             ],
 
-            [
-                'Not enough arguments (missing: "b").',
-                self::STATUS_ERROR,
-                'multiply', 7,
-            ],
         ];
     }
 
     /**
-     * Test our example commandfile class. Each time this function is called,
-     * it will be passed the expected output and expected status code; the
-     * remainder of the arguments passed will be used as $argv.
-     *
-     * @dataProvider exampleTestCommandParameters
+     * @dataProvider infoTestCommandParameters
      */
-    public function testExampleCommands($expectedOutput, $expectedStatus, $variable_args)
+    public function testInfoCommands($expectedOutput, $expectedStatus, $variable_args)
     {
         // Set this to the path to a fixture configuration file if you'd like to use one.
         $configurationFile = false;
