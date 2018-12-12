@@ -38,12 +38,10 @@ class WordPressInspector implements InspectorInterface
      */
     protected function isWordPressRoot(ComposerInfo $composer_info, $document_root)
     {
-        if (file_exists("$document_root/wp-config.php")) {
-            foreach (['/', '/wp/'] as $dir) {
-                $version_file = $dir . 'wp-includes/version.php';
-                if (file_exists("$document_root/$version_file")) {
-                    return new VersionInfo('WordPress', $composer_info, $document_root, $version_file, "#wp_version = '([0-9.]*)';#m");
-                }
+        foreach (['/', '/wp/'] as $dir) {
+            $version_file = $dir . 'wp-includes/version.php';
+            if (file_exists("$document_root/$version_file")) {
+                return new VersionInfo('WordPress', $composer_info, $document_root, $version_file, "#wp_version = '([0-9.]*)';#m");
             }
         }
         return false;
