@@ -41,7 +41,7 @@ class WordPressInspector implements InspectorInterface
         foreach (['/', '/wp/'] as $dir) {
             $version_file = $dir . 'wp-includes/version.php';
             if (file_exists("$document_root/$version_file")) {
-                return new VersionInfo('WordPress', $composer_info, $document_root, $version_file, "#wp_version = '([0-9.]*)';#m");
+                return new VersionInfo('WordPress', $composer_info, $document_root, $version_file, "#wp_version = '([0-9.a-z-]*)';#m");
             }
         }
         return false;
