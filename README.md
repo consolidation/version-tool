@@ -2,10 +2,10 @@
 
 The version-tool identifies the type and version of several popular projects.
 
-[![Travis CI](https://travis-ci.org/consolidation/version-tool.svg?branch=master)](https://travis-ci.org/consolidation/version-tool)
+[![Travis CI](https://travis-ci.org/consolidation/version-tool.svg?branch=main)](https://travis-ci.org/consolidation/version-tool)
 [![Windows CI](https://ci.appveyor.com/api/projects/status/{{PUT_APPVEYOR_STATUS_BADGE_ID_HERE}}?svg=true)](https://ci.appveyor.com/project/consolidation/version-tool)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/consolidation/version-tool/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/consolidation/version-tool/?branch=master)
-[![Coverage Status](https://coveralls.io/repos/github/consolidation/version-tool/badge.svg?branch=master)](https://coveralls.io/github/consolidation/version-tool?branch=master) 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/consolidation/version-tool/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/consolidation/version-tool/?branch=main)
+[![Coverage Status](https://coveralls.io/repos/github/consolidation/version-tool/badge.svg?branch=main)](https://coveralls.io/github/consolidation/version-tool?branch=main) 
 [![License](https://img.shields.io/badge/license-MIT-408677.svg)](LICENSE)
 
 <!-- 
@@ -14,7 +14,7 @@ There are two choices for LICENSE badges:
 1. License using shields.io (above): Can contain any text you want, and has no prerequisites, but must be manually updated if you change the license.
 2. License using poser.pugx.org (below): shows the license that Packagist.org read from your composer.json file. Must register with Packagist to use Poser.
 
-[![License](https://poser.pugx.org/consolidation/version-tool/license)](https://github.com/consolidation/version-tool//master/LICENSE)
+[![License](https://poser.pugx.org/consolidation/version-tool/license)](https://github.com/consolidation/version-tool//main/LICENSE)
 -->
 
 
