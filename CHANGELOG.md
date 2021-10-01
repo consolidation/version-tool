@@ -1,8 +1,8 @@
 # Changelog
 
-### Unreleased
+### 0.1.10 - 2021-10-1
 
-* List pending changes here.
+* Recognize Composer-managed Drupal 7 sites.
 
 ### 0.1.0 - 2018/Sep/28
 
