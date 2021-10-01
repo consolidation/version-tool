@@ -13,6 +13,13 @@ class Drupal7Inspector implements InspectorInterface
     public function valid(ComposerInfo $composer_info)
     {
         $drupal_root = $composer_info->projectRoot();
+
+        // Determine if there is a relocated drupal root.
+        $core = $composer_info->pathForType('type:drupal-core');
+        if ($core) {
+            $drupal_root = $drupal_root . '/' . $core;
+        }
+
         if (file_exists("$drupal_root/index.php")) {
             // Additional check for the presence of core/composer.json to
             // grant it is not a Drupal 7 site with a base folder named "core".
